@@ -1,12 +1,18 @@
+/** @jsxImportSource @emotion/react */
 import { FormEvent } from 'react';
+import { Button, ButtonVariant, Input } from '../lib/UI';
 
 interface Props {
   onSubmit: (username: string, password: string) => void;
+  buttonVariant?: ButtonVariant;
   buttonText?: string;
 }
 
+// const formStyles = ;
+
 const UserPasswordForm: React.FC<Props> = ({
   onSubmit,
+  buttonVariant = 'primary',
   buttonText = 'Submit',
 }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -21,16 +27,32 @@ const UserPasswordForm: React.FC<Props> = ({
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'stretch',
+          '> div': {
+            margin: '10px auto',
+            width: '100%',
+            maxWidth: '300px',
+          },
+        }}
+        onSubmit={handleSubmit}
+      >
         <div>
           <label htmlFor='username'>Username</label>
-          <input id='username' type='text' />
+          <Input id='username' type='text' />
         </div>
         <div>
           <label htmlFor='password'>Password</label>
-          <input id='password' type='password' />
+          <Input id='password' type='password' />
         </div>
-        <button type='submit'>{buttonText}</button>
+        <div>
+          <Button type='submit' variant={buttonVariant}>
+            {buttonText}
+          </Button>
+        </div>
       </form>
     </div>
   );
