@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FormEvent } from 'react';
-import { Button, ButtonVariant, Input } from '../lib/UI';
+import { Button, ButtonVariant, Input, Spinner } from '../lib/UI';
 
 interface Props {
   onSubmit: (username: string, password: string) => void;

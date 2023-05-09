@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
-import { Dialog as MuiDialog } from '@mui/material';
+import styled from '@emotion/styled/macro';
+import { Dialog as MuiDialog, keyframes } from '@mui/material';
+import { FaSpinner } from 'react-icons/fa';
 
 import * as colors from '../../styles/colors';
 import * as mediaQueries from '../../styles/media-queries';
@@ -68,4 +69,14 @@ const Dialog = styled(MuiDialog)({
   },
 });
 
-export { Button, CircleButton, Input, FormGroup, Dialog };
+const spin = keyframes({
+  '0%': { transform: 'rotate(0deg)' },
+  '100%': { transform: 'rotate(360deg)' },
+});
+
+const Spinner = styled(FaSpinner)({
+  animation: `${spin} 1s linear infinite`,
+});
+Spinner.defaultProps = { 'aria-label': 'loading' };
+
+export { Button, CircleButton, Input, FormGroup, Dialog, Spinner };
