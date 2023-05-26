@@ -4,6 +4,7 @@ import { Logo } from './components/logo';
 import { Button } from './components/lib/UI';
 import LoginDialog from './components/layout/login-dialog';
 import RegisterDialog from './components/layout/register-dialog';
+import SearchBar from './components/search';
 
 type Modals = 'none' | 'login' | 'register';
 
@@ -27,7 +28,7 @@ const App: React.FC = () => {
     >
       <Logo width='80' height='80' />
       <h1>Bookshelf</h1>
-      <div
+      {/* <div
         css={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
@@ -38,9 +39,9 @@ const App: React.FC = () => {
         <Button variant='secondary' onClick={() => setOpenModal('register')}>
           Register
         </Button>
-      </div>
+      </div> */}
 
-      <LoginDialog
+      {/* <LoginDialog
         isOpen={openModal === 'login'}
         onSubmit={(username, password) =>
           console.log('login: ', username, password)
@@ -53,7 +54,8 @@ const App: React.FC = () => {
           console.log('register: ', username, password)
         }
         onClose={handleDialogClose}
-      />
+      /> */}
+      <SearchBar />
     </div>
   );
 };

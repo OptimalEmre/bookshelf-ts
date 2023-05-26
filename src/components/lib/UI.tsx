@@ -60,6 +60,14 @@ const FormGroup = styled.div({
   flexDirection: 'column',
 });
 
+const BookListUL = styled.ul({
+  listStyle: 'none',
+  padding: '0',
+  display: 'grid',
+  gridTemplateRows: 'repeat(auto-fill, minmax(100px, 1fr))',
+  gridGap: '1em',
+});
+
 const Dialog = styled(MuiDialog)({
   margin: '0 auto',
   paddig: '5rem',
@@ -79,4 +87,4 @@ const Spinner = styled(FaSpinner)({
 });
 Spinner.defaultProps = { 'aria-label': 'loading' };
 
-export { Button, CircleButton, Input, FormGroup, Dialog, Spinner };
+export { Button, CircleButton, Input, FormGroup, BookListUL, Dialog, Spinner };
