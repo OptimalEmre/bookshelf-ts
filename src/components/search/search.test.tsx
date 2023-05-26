@@ -1,4 +1,9 @@
-import { render, screen, waitFor } from '../../../test/test-utils';
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '../../../test/test-utils';
 import userEvent from '@testing-library/user-event';
 import { setupServer } from 'msw/node';
 import { mockHandlers } from '../../msw/handlers';
@@ -13,6 +18,8 @@ describe('SearchBar', () => {
     render(<SearchBar />);
     userEvent.type(screen.getByPlaceholderText(/Search books/i), 'Zack');
     act(() => userEvent.click(screen.getByRole('button', { name: /search/i })));
+    expect(screen.getByLabelText(/loading/i)).toBeInTheDocument();
     expect(await screen.findByText(/Voice of War/i)).toBeInTheDocument();
+    expect(screen.queryByLabelText(/loading/i)).not.toBeInTheDocument();
   });
 });
