@@ -1,21 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { Logo } from './components/logo';
-import UserPasswordForm from './components/user-password-form';
-import { Button, CircleButton, Dialog } from './components/lib/UI';
-import { DialogContent, DialogTitle } from '@mui/material';
+import { Button } from './components/lib/UI';
+import LoginDialog from './components/layout/login-dialog';
+import RegisterDialog from './components/layout/register-dialog';
+import SearchBar from './components/search';
 
 type Modals = 'none' | 'login' | 'register';
-
-type MuiDialogCloseReason = 'backdropClick' | 'escapeKeyDown';
 
 const App: React.FC = () => {
   const [openModal, setOpenModal] = useState<Modals>('none');
 
-  const handleDialogClose = (
-    event: MouseEvent,
-    reason: MuiDialogCloseReason
-  ) => {
+  const handleDialogClose = () => {
     setOpenModal('none');
   };
 
@@ -32,7 +28,7 @@ const App: React.FC = () => {
     >
       <Logo width='80' height='80' />
       <h1>Bookshelf</h1>
-      <div
+      {/* <div
         css={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
@@ -43,47 +39,23 @@ const App: React.FC = () => {
         <Button variant='secondary' onClick={() => setOpenModal('register')}>
           Register
         </Button>
-      </div>
-      <Dialog
-        open={openModal === 'login'}
+      </div> */}
+
+      {/* <LoginDialog
+        isOpen={openModal === 'login'}
+        onSubmit={(username, password) =>
+          console.log('login: ', username, password)
+        }
         onClose={handleDialogClose}
-        PaperProps={{ style: { padding: '1rem 1rem 3rem' } }}
-      >
-        <CircleButton
-          onClick={() => setOpenModal('none')}
-          css={{ marginLeft: 'auto' }}
-        >
-          &times;
-        </CircleButton>
-        <DialogTitle>Login</DialogTitle>
-        <DialogContent>
-          <UserPasswordForm
-            onSubmit={(username, password) =>
-              console.log('login: ', username, password)
-            }
-          />
-        </DialogContent>
-      </Dialog>
-      <Dialog
-        open={openModal === 'register'}
+      />
+      <RegisterDialog
+        isOpen={openModal === 'register'}
+        onSubmit={(username, password) =>
+          console.log('register: ', username, password)
+        }
         onClose={handleDialogClose}
-        PaperProps={{ style: { padding: '1rem 1rem 3rem' } }}
-      >
-        <CircleButton
-          onClick={() => setOpenModal('none')}
-          css={{ marginLeft: 'auto' }}
-        >
-          &times;
-        </CircleButton>
-        <DialogTitle>Register</DialogTitle>
-        <DialogContent>
-          <UserPasswordForm
-            onSubmit={(username, password) =>
-              console.log('register: ', username, password)
-            }
-          />
-        </DialogContent>
-      </Dialog>
+      /> */}
+      <SearchBar />
     </div>
   );
 };

@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
-import { Dialog as MuiDialog } from '@mui/material';
+import styled from '@emotion/styled/macro';
+import { Dialog as MuiDialog, keyframes } from '@mui/material';
+import { FaSpinner } from 'react-icons/fa';
 
 import * as colors from '../../styles/colors';
 import * as mediaQueries from '../../styles/media-queries';
@@ -59,6 +60,14 @@ const FormGroup = styled.div({
   flexDirection: 'column',
 });
 
+const BookListUL = styled.ul({
+  listStyle: 'none',
+  padding: '0',
+  display: 'grid',
+  gridTemplateRows: 'repeat(auto-fill, minmax(100px, 1fr))',
+  gridGap: '1em',
+});
+
 const Dialog = styled(MuiDialog)({
   margin: '0 auto',
   paddig: '5rem',
@@ -68,4 +77,14 @@ const Dialog = styled(MuiDialog)({
   },
 });
 
-export { Button, CircleButton, Input, FormGroup, Dialog };
+const spin = keyframes({
+  '0%': { transform: 'rotate(0deg)' },
+  '100%': { transform: 'rotate(360deg)' },
+});
+
+const Spinner = styled(FaSpinner)({
+  animation: `${spin} 1s linear infinite`,
+});
+Spinner.defaultProps = { 'aria-label': 'loading' };
+
+export { Button, CircleButton, Input, FormGroup, BookListUL, Dialog, Spinner };
