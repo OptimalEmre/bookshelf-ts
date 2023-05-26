@@ -8,6 +8,7 @@ const mockHandlers = [
 
     if (query) {
       return res(
+        ctx.delay(500),
         ctx.json({
           books: BOOK_LIST.filter((book) =>
             bookContainsSearchQuery(book, query)
